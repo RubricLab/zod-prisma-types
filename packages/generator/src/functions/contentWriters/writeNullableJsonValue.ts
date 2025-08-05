@@ -8,7 +8,7 @@ export const writeNullableJsonValue = ({
   const { useMultipleFiles } = dmmf.generatorConfig;
 
   if (useMultipleFiles && !getSingleFileContent) {
-    writeImport('{ z }', 'zod');
+    writeImport('{ z }', 'zod/v4');
     writeImport('transformJsonNull', './transformJsonNull');
     writeImport('JsonValueSchema', './JsonValueSchema');
   }

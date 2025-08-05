@@ -12,7 +12,7 @@ export const writeCustomEnum = (
   const { useMultipleFiles } = dmmf.generatorConfig;
 
   if (useMultipleFiles && !getSingleFileContent) {
-    writeImport('{ z }', 'zod');
+    writeImport('{ z }', 'zod/v4');
   }
 
   writer.blankLine().write(`export const ${name}Schema = z.enum([`);

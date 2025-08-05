@@ -23,7 +23,7 @@ export const writeModelOrType = (
   const { useMultipleFiles, createRelationValuesTypes } = dmmf.generatorConfig;
 
   if (useMultipleFiles && !getSingleFileContent) {
-    writeImport('{ z }', 'zod');
+    writeImport('{ z }', 'zod/v4');
     writeImportSet(model.imports);
 
     if (createRelationValuesTypes && model.hasRelationFields) {

@@ -1,6 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { DecimalJsLike } from '@prisma/client/runtime/library';
-import { z } from 'zod';
+import { z } from 'zod/v4';
 import {
   DecimalJsLikeSchema,
   isValidDecimalInput,

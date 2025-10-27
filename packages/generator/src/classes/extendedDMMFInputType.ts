@@ -189,7 +189,7 @@ export class ExtendedDMMFInputType
       decimalJSInstalled && this.isDecimalField
         ? `import Decimal from 'decimal.js';`
         : '';
-    const zodImport = "import { z } from 'zod';";
+    const zodImport = "import { z } from 'zod/v4';";
 
     const fieldImports = [
       prismaImport,

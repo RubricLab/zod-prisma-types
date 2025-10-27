@@ -1,96 +1,44 @@
 import { PrismaVersionSchema } from '../utils';
-import { z } from 'zod';
+import { z } from 'zod/v4';
+
+////////////////////////////////////////////////
+// UTILS
+/////////////////////////////////////////////////
+
+// Helper to convert optional string ("true" | "false") to boolean with a default value
+const boolFromString = (defaultValue: boolean) =>
+  z
+    .string()
+    .optional()
+    .transform((val) => val === 'true')
+    .default(defaultValue);
 
 ////////////////////////////////////////////////
 // SCHEMA
 /////////////////////////////////////////////////
 
 export const configSchema = z.object({
-  useMultipleFiles: z
-    .string()
-    .optional()
-    .default('false')
-    .transform((val) => val === 'true'),
-  writeBarrelFiles: z
-    .string()
-    .optional()
-    .default('true')
-    .transform((val) => val === 'true'),
-  createInputTypes: z
-    .string()
-    .optional()
-    .default('true')
-    .transform((val) => val === 'true'),
-  createModelTypes: z
-    .string()
-    .optional()
-    .default('true')
-    .transform((val) => val === 'true'),
-  createOptionalDefaultValuesTypes: z
-    .string()
-    .optional()
-    .default('false')
-    .transform((val) => val === 'true'),
-  createRelationValuesTypes: z
-    .string()
-    .optional()
-    .default('false')
-    .transform((val) => val === 'true'),
-  createPartialTypes: z
-    .string()
-    .optional()
-    .default('false')
-    .transform((val) => val === 'true'),
-  addInputTypeValidation: z
-    .string()
-    .optional()
-    .default('true')
-    .transform((val) => val === 'true'),
-  addIncludeType: z
-    .string()
-    .optional()
-    .default('true')
-    .transform((val) => val === 'true'),
-  addSelectType: z
-    .string()
-    .optional()
-    .default('true')
-    .transform((val) => val === 'true'),
-  validateWhereUniqueInput: z
-    .string()
-    .optional()
-    .default('true')
-    .transform((val) => val === 'true'),
-  useDefaultValidators: z
-    .string()
-    .optional()
-    .default('true')
-    .transform((val) => val === 'true'),
-  coerceDate: z
-    .string()
-    .optional()
-    .default('true')
-    .transform((val) => val === 'true'),
-  writeNullishInModelTypes: z
-    .string()
-    .optional()
-    .default('false')
-    .transform((val) => val === 'true'),
+  useMultipleFiles: boolFromString(false),
+  writeBarrelFiles: boolFromString(true),
+  createInputTypes: boolFromString(true),
+  createModelTypes: boolFromString(true),
+  createOptionalDefaultValuesTypes: boolFromString(false),
+  createRelationValuesTypes: boolFromString(false),
+  createPartialTypes: boolFromString(false),
+  addInputTypeValidation: boolFromString(true),
+  addIncludeType: boolFromString(true),
+  addSelectType: boolFromString(true),
+  validateWhereUniqueInput: boolFromString(true),
+  useDefaultValidators: boolFromString(true),
+  coerceDate: boolFromString(true),
+  writeNullishInModelTypes: boolFromString(false),
   /**
    * @deprecated This option is deprecated. Zod implemented a fix for this issue.
    */
-  useTypeAssertions: z
-    .string()
-    .optional()
-    .default('false')
-    .transform((val) => val === 'true'),
+  useTypeAssertions: boolFromString(false),
   prismaClientPath: z.string().default('@prisma/client'),
   provider: z.string().optional(),
-  isMongoDb: z
-    .string()
-    .optional()
-    .default('false')
-    .transform((val) => val === 'true'),
+  isMongoDb: boolFromString(false),
   inputTypePath: z.string().optional().default('inputTypeSchemas'), // currently only used internally
   outputTypePath: z.string().optional().default('outputTypeSchemas'), // currently only used internally
   prismaVersion: PrismaVersionSchema.optional(),

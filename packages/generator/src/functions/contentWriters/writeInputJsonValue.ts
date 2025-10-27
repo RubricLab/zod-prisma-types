@@ -8,7 +8,7 @@ export const writeInputJsonValue = ({
   const { useMultipleFiles, prismaClientPath } = dmmf.generatorConfig;
 
   if (useMultipleFiles && !getSingleFileContent) {
-    writeImport('{ z }', 'zod');
+    writeImport('{ z }', 'zod/v4');
     writeImport('{ Prisma }', prismaClientPath);
   }
 

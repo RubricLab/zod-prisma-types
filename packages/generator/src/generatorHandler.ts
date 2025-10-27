@@ -1,5 +1,5 @@
 import { generatorHandler } from '@prisma/generator-helper';
-import { z } from 'zod';
+import { z } from 'zod/v4';
 
 import { DirectoryHelper, ExtendedDMMF } from './classes';
 import { generateMultipleFiles } from './generateMultipleFiles';

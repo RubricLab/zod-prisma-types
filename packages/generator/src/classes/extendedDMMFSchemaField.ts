@@ -188,7 +188,7 @@ export class ExtendedDMMFSchemaField
     const { prismaClientPath } = this.generatorConfig;
     const prismaImport = `import type { Prisma } from '${prismaClientPath}';`;
 
-    const imports: string[] = ["import { z } from 'zod';", prismaImport];
+    const imports: string[] = ["import { z } from 'zod/v4';", prismaImport];
 
     if (this.writeIncludeArg) {
       imports.push(

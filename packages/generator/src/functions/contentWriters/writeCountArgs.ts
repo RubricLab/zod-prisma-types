@@ -13,7 +13,7 @@ export const writeCountArgs = (
     dmmf.generatorConfig;
 
   if (useMultipleFiles && !getSingleFileContent) {
-    writeImport('{ z }', 'zod');
+    writeImport('{ z }', 'zod/v4');
     writeImport('type { Prisma }', prismaClientPath);
     writeImport(
       `{ ${model.name}CountOutputTypeSelectSchema }`,
